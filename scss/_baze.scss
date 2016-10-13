@@ -1,0 +1,43 @@
+@import '_variables.scss';
+
+p{
+  margin: 0 0 $gap/2;
+}
+
+.alignnone{
+  float: none;
+  margin: 0 auto $gap/2 auto;
+}
+
+a{
+  text-decoration: underline;
+  color: $bg-color;
+}
+
+a:hover {
+  color: $bg-color;
+  text-decoration: none;      
+}
+
+.sidebar{
+	width: 30%;
+	padding: 30px;
+	background-color: #eee;
+}
+
+.article{
+	//padding-right: 40px;
+	width: 100%;
+}
+
+.header{
+	height: 80px;
+	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.1);
+	&-container{
+		height:100%;
+	}
+
+	&-row{
+		height:100%;
+	}
+}

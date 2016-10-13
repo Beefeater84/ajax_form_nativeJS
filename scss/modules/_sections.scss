@@ -1,0 +1,11 @@
+@import '_variables.scss';
+/*** Sections ***/
+
+section{
+  margin-bottom: $gap;
+  @extend %clear-fix;
+}
+
+
+
+

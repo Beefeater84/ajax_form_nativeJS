@@ -1,0 +1,165 @@
+$font-family-m: 'OpenSans-Regular', Arial, sans-serif;
+$font-family-h: 'OpenSans-Light', Arial, sans-serif;
+$font-size: 16px;
+$line-height: 24px;
+$color:	#262b2e;
+$h-color: #141414; // Цвет заголовков
+$bg-color: #009acd;
+
+$gap: 1.8rem;
+$handhelds: 768px;
+$tablets:992px;
+$wide-screens:1200px;
+
+
+
+@mixin respond-to($media) {
+  @if $media == phone {
+    @media only screen and (max-width: $handhelds - 1) { @content; }
+  }
+  @else if $media == handhelds {
+    @media only screen and (max-width: $tablets - 1) { @content; }
+  }
+  @else if $media == tablets {
+    @media only screen and (max-width: $wide-screens - 1) { @content; }
+  }
+}
+
+%clear-fix{
+	&:after{
+	    display: table;
+	    clear: both;
+	    content: '';
+	}
+}
+
+@function rem($px, $base: $font_size) {
+    @return ($px / $base) * 1rem;
+}
+
+
+/*** Вспомогательные ***/
+
+%ta-c{
+	text-align: center;
+}
+
+%clean-button{
+  background-color: transparent;
+  border:0;
+}
+
+@mixin clean-button() {
+  background-color: transparent;
+  border:0;
+}
+
+/// Mixin printing a linear-gradient
+/// as well as a plain color fallback
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {Keyword | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+
+  // Direction has been omitted and happens to be a color-stop
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: linear-gradient($direction, $color-stops);
+}
+
+/// Test if `$value` is a valid direction
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+  $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+  $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+  @return $is-keyword or $is-angle;
+}
+
+/// Convert a direction to legacy syntax
+/// @param {Keyword | Angle} $value - Value to convert
+/// @require {function} is-direction
+/// @require {function} convert-angle
+/// @throw Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.;
+@function legacy-direction($value) {
+  @if is-direction($value) == false {
+    @error "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
+  }
+
+  $conversion-map: (
+    to top          : bottom,
+    to top right    : bottom left,
+    to right top    : left bottom,
+    to right        : left,
+    to bottom right : top left,
+    to right bottom : left top,
+    to bottom       : top,
+    to bottom left  : top right,
+    to left bottom  : right top,
+    to left         : right,
+    to left top     : right bottom,
+    to top left     : bottom right
+  );
+
+  @if map-has-key($conversion-map, $value) {
+    @return map-get($conversion-map, $value);
+  }
+
+  @return 90deg - $value;
+}
+
+/******** Helpers *******/
+
+%align-center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+%vertical-align{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);  
+}
+
+%center-center{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+   
+}
+
+
+%reset-margin{
+  margin:0px;
+}
+
+%assistive-text {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+@mixin invisible() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+@mixin clean-button() {
+  background-color: transparent;
+  border:0;
+}
+

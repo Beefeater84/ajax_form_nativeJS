@@ -1,0 +1,49 @@
+@import '_variables';
+
+.wed-form{
+  label{
+    font-weight: normal;
+  }
+  input{
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 15px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+.form-result--status{
+  border-radius: 4px;
+  margin-bottom: $gap/2;
+  padding: $gap/2; 
+}
+
+.form-result{
+  p{
+    margin-bottom: $gap/4;
+  }
+
+  &--isOk{
+    @extend .form-result--status;
+    border: 1px solid green;
+    background-color: #dff0d8;
+  }
+
+  &--isOk--title{
+    color: green;
+    font-weight: bold;
+  }
+
+  &--isBad{
+    @extend .form-result--status;
+    border: 1px solid $bg-color;
+    background-color: #fff4f4;
+  }
+
+  &--isBad--title{
+    color: green;
+    font-weight: bold;
+  }
+
+}

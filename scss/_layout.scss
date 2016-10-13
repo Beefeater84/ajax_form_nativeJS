@@ -1,0 +1,281 @@
+@import '_variables.scss';
+
+body{
+  font-family: $font-family-m;
+  font-size: $font-size;
+  line-height: $line-height;
+  position: relative;
+  display: block;
+  height: 100%;
+  color: $color;
+}
+
+html{
+  font-size: $font-size;
+}
+
+.main-content,
+.header,
+.footer{
+  @extend %clear-fix;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+/* Small devices (tablets, 768px and up) */
+
+// Extra small devices (portrait phones, less than 34em)
+.container{
+  max-width: 100%;
+  padding-right: $gap;
+  padding-left: $gap;
+}
+
+.container{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Small devices (landscape phones, less than 34em - 544px - xs)
+@media (min-width: 34rem){
+  .container{
+    max-width: 35rem;
+  }
+}
+
+// Small devices (landscape phones, less than 48em - 766px -sm)
+@media (min-width: 48rem){
+  .container{
+    max-width: 49rem;
+  }
+}
+
+// Medium devices (tablets, less than 62em - 992px - md)
+@media (min-width: 62rem){
+  .container{
+    max-width: ( 940 / 16) * 1rem;
+  }
+}
+
+// Large devices (desktops, less than 75em - 1200 - lg)
+@media (min-width: 75rem){
+  .container{
+    max-width: ( 1250 / 16) * 1rem;
+  }
+}
+
+*{
+  box-sizing: border-box;
+  &:focus{
+    outline: none;
+  }
+}
+
+/***** INVERT COLOR     */
+
+.invert-color{
+  color: #fff !important;
+}
+
+
+
+/********** FORM *********/
+
+
+input[placeholder]{
+  text-overflow: ellipsis;
+}
+input::-moz-placeholder{
+  text-overflow: ellipsis;
+}
+input:-moz-placeholder{
+  text-overflow: ellipsis;
+}
+input:-ms-input-placeholder{
+  text-overflow: ellipsis;
+}
+
+/* сдвиг placeholder-а вниз при фокусе*/
+input::-webkit-input-placeholder{
+  line-height: 20px;
+  transition: line-height .5s ease;
+}
+input::-moz-placeholder{
+  line-height: 20px;
+  transition: line-height .5s ease;
+}
+input:-moz-placeholder{
+  line-height: 20px;
+  transition: line-height .5s ease;
+}
+input:-ms-input-placeholder{
+  line-height: 20px;
+  transition: line-height .5s ease;
+}
+input:focus::-webkit-input-placeholder{
+  line-height: 100px;
+  transition: line-height .5s ease;
+}
+input:focus::-moz-placeholder{
+  line-height: 100px;
+  transition: line-height .5s ease;
+}
+input:focus:-moz-placeholder{
+  line-height: 100px;
+  transition: line-height .5s ease;
+}
+input:focus:-ms-input-placeholder{
+  line-height: 100px;
+  transition: line-height .5s ease;
+}
+
+/* плавное изменение прозрачности  placeholder-а при фокусе */
+textarea::-webkit-input-placeholder{
+  transition: opacity .3s ease;
+  opacity: 1;
+}
+textarea::-moz-placeholder{
+  transition: opacity .3s ease;
+  opacity: 1;
+}
+textarea:-moz-placeholder{
+  transition: opacity .3s ease;
+  opacity: 1;
+}
+textarea:-ms-input-placeholder{
+  transition: opacity .3s ease;
+  opacity: 1;
+}
+textarea:focus::-webkit-input-placeholder{
+  transition: opacity .3s ease;
+  opacity: 0;
+}
+textarea:focus::-moz-placeholder{
+  transition: opacity .3s ease;
+  opacity: 0;
+}
+textarea:focus:-moz-placeholder{
+  transition: opacity .3s ease;
+  opacity: 0;
+}
+textarea:focus:-ms-input-placeholder{
+  transition: opacity .3s ease;
+  opacity: 0;
+}
+
+
+/** H1-H6 ***/
+
+h1{
+  font-family: $font-family-h;
+  font-size: rem(48px);
+  font-weight: normal;
+  line-height: rem(50px);
+  margin-bottom: 0;
+  padding-bottom: rem(5px);
+  color: $h-color;
+}
+
+h2{
+  font-family: $font-family-h;
+  font-size: rem(38px); /* 38px */
+  font-weight: normal;
+  line-height: rem(40px);
+  margin-bottom: 0;
+  padding-bottom: rem(10px);
+  color: $h-color;
+}
+
+h3{
+  font-family: $font-family-h;
+  font-size: rem(30px);
+  font-weight: normal;
+  line-height: rem(32px);
+  margin-bottom: 0;
+  padding-bottom: rem(17px);
+  color: $h-color;
+}
+
+h4{
+  font-family: $font-family-m;
+  font-size: rem(24px);
+  font-weight: normal;
+  line-height: rem(28px);
+  margin-bottom: rem(20px);
+  color: $h-color;
+  -webkit-margin-before: 0;
+}
+
+h5{
+  font-family: $font-family-m;
+  font-size: rem(24px);
+  font-weight: normal;
+  line-height: rem(28px);
+  margin-bottom: rem(12px);
+  color: $h-color;
+  -webkit-margin-before: 0;
+}
+
+h6{
+  font-family: $font-family-m;
+  font-size: rem(18px);
+  font-weight: bold;
+  line-height: rem(20px);
+  margin-bottom: 0;
+  color: $h-color;
+}
+
+/*
+ Bootstrap correction
+ */
+
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3{
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+img,
+media{
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+ul,
+menu,
+dir{
+  display: block;
+  list-style-type: disc;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+}
+
+label{
+  font-weight: normal;
+  display: block;
+  text-align: left;
+}
+
+li{
+	list-style-position: inside;
+}
+
+body{
+	margin: 0;
+}
+
+
+
+
+
+

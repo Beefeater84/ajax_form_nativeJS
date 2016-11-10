@@ -36,14 +36,30 @@
 	  }
 	}
 
+	/* Получение значений полей формы и их name */
+	function getMessage( form, custom_elements ){
+		var customEl = custom_elements || {};
+		var msg = customEl; 
+		for (var i = form.elements.length - 1; i >= 0; i--) {
+			if((form.elements[i].tagName == 'INPUT')||(form.elements[i].tagName == 'TEXTAREA')){
+				msg[form.elements[i].name] = form.elements[i].value;
+			}
+		}
+
+		console.log(msg);
+
+
+		return JSON.stringify(msg);
+	}
+
 	/*Отправка формы методом Ajax*/
 	function sendAjaxForm(form){
 
 		var req = new XMLHttpRequest();
 		req.open('POST', url, true);
-		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-		req.send(null);
+		req.send( getMessage(form) );
 
 		req.onreadystatechange = function(){
 			
